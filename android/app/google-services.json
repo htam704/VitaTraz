@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "322798080002",
+    "project_id": "vitatraz",
+    "storage_bucket": "vitatraz.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:322798080002:android:384c239dd1ca03b533971b",
+        "android_client_info": {
+          "package_name": "com.example.fl_vitatraz_app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD1-cbAVQCbKBd-EHJkFueole9mOLrv1ak"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

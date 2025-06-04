@@ -1,0 +1,2 @@
+C:/VitaTraz/android/app/.cxx/Debug/6i4f622c/x86_64/CMakeFiles/edit_cache.dir
+C:/VitaTraz/android/app/.cxx/Debug/6i4f622c/x86_64/CMakeFiles/rebuild_cache.dir

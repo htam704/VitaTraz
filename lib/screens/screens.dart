@@ -1,0 +1,16 @@
+export 'package:fl_vitatraz_app/screens/principals/home_screen.dart';
+export 'package:fl_vitatraz_app/screens/principals/medications_screen.dart';
+export 'package:fl_vitatraz_app/screens/principals/records_screen.dart';
+export 'package:fl_vitatraz_app/screens/principals/patients_screen.dart';
+export 'package:fl_vitatraz_app/screens/onboarding/welcome_screen.dart';
+export 'package:fl_vitatraz_app/screens/authentication/login_screen.dart';
+export 'package:fl_vitatraz_app/screens/authentication/profile_screen.dart';
+export 'package:fl_vitatraz_app/screens/settings/edit_profile_screen.dart';
+export 'package:fl_vitatraz_app/screens/settings/notifications_screen.dart';
+export 'package:fl_vitatraz_app/screens/settings/privacy_screen.dart';
+export 'package:fl_vitatraz_app/screens/details/patient_details_screen.dart';
+export 'package:fl_vitatraz_app/screens/details/record_details_screen.dart';
+export 'package:fl_vitatraz_app/screens/details/medication_details_screen.dart';
+export 'package:fl_vitatraz_app/screens/create/create_record_screen.dart';
+export 'package:fl_vitatraz_app/screens/create/add_todo_screen.dart';
+export 'package:fl_vitatraz_app/screens/authentication/forgot_password_screen.dart';
