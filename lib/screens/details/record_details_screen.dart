@@ -90,7 +90,7 @@ class RecordDetailsScreen extends StatelessWidget {
         elevation: 0,
         leading: const BackButton(color: AppColors.secondaryBackground),
         title: Text(
-          'Clinical Record',
+          'Detalles de la Ficha',
           style: GoogleFonts.manrope(
             fontSize: 18,
             fontWeight: FontWeight.w600,

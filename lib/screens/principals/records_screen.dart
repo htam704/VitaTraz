@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:firebase_storage/firebase_storage.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -71,6 +72,18 @@ class _RecordsScreenState extends State<RecordsScreen> {
     });
   }
 
+  // Retrieve patient image URL from Firebase Storage; return null if not found
+  Future<String?> _getPatientImageUrl(String dni) async {
+    try {
+      final ref = FirebaseStorage.instance
+          .ref()
+          .child('vitatraz/pacientes/$dni.jpg');
+      return await ref.getDownloadURL();
+    } catch (e) {
+      return null; // No image available
+    }
+  }
+  
   // Load all patient records using collectionGroup('fichas') and cache patient data
   Future<void> _loadAllRecords() async {
     final List<Map<String, dynamic>> tempList = [];
@@ -297,31 +310,34 @@ class _RecordsScreenState extends State<RecordsScreen> {
                     itemCount: _filteredRecords.length,
                     itemBuilder: (context, i) {
                       final r = _filteredRecords[i];
-
-                      return Padding(
-                        padding: const EdgeInsets.only(bottom: 24),
-                        child: PatientRecord(
-                          name:        r['patientName'] as String,
-                          dni:         r['patientDni'] as String,
-                          createdDate: r['createdDate'] as String,
-                          diagnosis:   r['diagnosticoPrincipal'] as String,
-                          reason:      r['motivoIngreso'] as String,
-                          age:         r['age'] as String,
-                          sex:         r['sex'] as String,
-                          avatarUrl:   (r['avatar'] as String).isEmpty
-                              ? null
-                              : r['avatar'] as String,
-                          onTap: () {
-                            // Navigate to RecordDetailsScreen with record data
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                builder: (_) =>
-                                    RecordDetailsScreen(data: r),
-                              ),
-                            );
-                          },
-                        ),
+                      // Cargamos la imagen con FutureBuilder
+                      return FutureBuilder<String?>(
+                        future: _getPatientImageUrl(r['patientDni'] as String),
+                        builder: (context, imageSnap) {
+                          return Padding(
+                            padding: const EdgeInsets.only(bottom: 24),
+                            child: PatientRecord(
+                              name:        r['patientName'] as String,
+                              dni:         r['patientDni'] as String,
+                              createdDate: r['createdDate'] as String,
+                              diagnosis:   r['diagnosticoPrincipal'] as String,
+                              reason:      r['motivoIngreso'] as String,
+                              age:         r['age'] as String,
+                              sex:         r['sex'] as String,
+                              avatarUrl:   imageSnap.data,
+                              onTap: () {
+                                // Navigate to RecordDetailsScreen with record data
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (_) =>
+                                        RecordDetailsScreen(data: r),
+                                  ),
+                                );
+                              },
+                            ),
+                          );
+                        },
                       );
                     },
                   ),

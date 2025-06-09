@@ -8,7 +8,7 @@ class TodoListHeader extends StatelessWidget {
 
   const TodoListHeader({
     super.key,
-    this.title = 'TO DO',
+    this.title = 'TAREAS',
     required this.onAdd,
   });
 
